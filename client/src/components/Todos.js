@@ -3,6 +3,7 @@ import { useUserId, useAuthenticated } from "@nhost/react";
 import FetchTodos from "./TodoList";
 import { nhost } from "../nhost";
 import PropTypes from "prop-types";
+import styles from "../styles/components/Todos.module.css";
 
 const CreateTodo = ({ isAdmin }) => {
   const [title, setTitle] = useState("");
@@ -53,15 +54,17 @@ const CreateTodo = ({ isAdmin }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-        />
+        />{" "}
         <input
           type="text"
           placeholder="Description"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
           required
-        />
-        <button type="submit">Add Todo</button>
+        />{" "}
+        <button className={styles.button} type="submit">
+          Add Todo
+        </button>
       </form>
       <FetchTodos userId={userId} isAdmin={isAdmin} />
     </div>

@@ -7,7 +7,6 @@ const MagicLink = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-  console.log("yes");
   const handleMagicLinkSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -31,7 +30,7 @@ const MagicLink = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
-      />
+      />{" "}
       <button type="submit" disabled={isLoading}>
         {isLoading ? "Sending..." : "Send Magic Link"}
       </button>

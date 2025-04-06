@@ -38,7 +38,7 @@ const SignInPage = () => {
           </div>
         </div>
         <div className={styles.buttons}>
-          <button onClick={() => setActiveTab("default")}>default</button>
+          <button onClick={() => setActiveTab("default")}>Default</button>
           <button onClick={() => setActiveTab("otp")}>OTP</button>
           <button onClick={() => setActiveTab("magicLink")}>Magic Link</button>
         </div>

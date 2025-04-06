@@ -55,7 +55,6 @@ const SubscribeTodos = ({ userId, isAdmin }) => {
 
   const [deleteTodo] = useMutation(DELETE_TODO);
   const handleDeleteTodo = async (id) => {
-    console.log(id);
     const { data, error: deleteError } = await deleteTodo({
       variables: { id: id },
     });
@@ -66,7 +65,7 @@ const SubscribeTodos = ({ userId, isAdmin }) => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Loading...try refreshing the page.</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (

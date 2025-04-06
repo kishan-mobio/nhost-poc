@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useOutletContext } from "react-router-dom";
 import Input from "../components/Input";
-import { nhost } from "../nhost";
 import { gql, useMutation } from "@apollo/client";
 
 const UPDATE_USER_MUTATION = gql`
@@ -35,7 +34,6 @@ const Profile = () => {
 
   const updateUserProfile = async (e) => {
     e.preventDefault();
-    console.log(firstName, lastName);
     try {
       await updateUser({
         variables: {
@@ -50,29 +48,6 @@ const Profile = () => {
     }
   };
 
-  console.log(nhost.auth.url);
-
-  const enableMfa = async () => {
-    const response = await fetch(`${nhost.auth.url}/mfa/totp`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${nhost.auth.getSession()?.accessToken}`,
-      },
-    });
-
-    const data = await response.json();
-
-    if (data.error) {
-      console.error(data.error.message);
-    } else {
-      console.log(
-        "Scan this QR code with your authenticator app:",
-        response.qrCodeUrl
-      );
-    }
-  };
-
   return (
     <>
       <Helmet>
@@ -84,8 +59,6 @@ const Profile = () => {
           <h2>Profile</h2>
           <p>Update your personal information.</p>
         </div>
-
-        <button onClick={enableMfa}>Enable MFA</button>
 
         <div className={styles.card}>
           <form onSubmit={updateUserProfile} className={styles.form}>

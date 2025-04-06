@@ -9,7 +9,6 @@ const OTP = () => {
   const [email, setEmail] = useState("");
   const handleOTP = async (e) => {
     e.preventDefault();
-    console.log(otp);
     try {
       await nhost.auth.verifyEmailOTP(email, otp);
       navigate("/");
@@ -32,10 +31,11 @@ const OTP = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-      />
+      />{" "}
       <button onClick={handleSendEmail} className={styles.googleButton}>
         Sign in with OTP
-      </button>{" "}
+      </button>
+      <br />
       <br />
       <form onSubmit={handleOTP}>
         <input
@@ -43,7 +43,7 @@ const OTP = () => {
           value={otp}
           onChange={(e) => setOTP(e.target.value)}
           placeholder="Enter your OTP"
-        />
+        />{" "}
         <button type="submit">Verify OTP</button>
       </form>
     </div>

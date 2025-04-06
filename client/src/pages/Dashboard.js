@@ -6,7 +6,6 @@ import Todos from "../components/Todos";
 
 const Dashboard = () => {
   const { user } = useOutletContext();
-  console.log(user?.defaultRole);
   const userName = user?.metadata?.firstName || "";
 
   return (
